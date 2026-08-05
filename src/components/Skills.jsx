@@ -19,10 +19,11 @@ const SKILL_CATEGORIES = [
   },
   {
     name: "Tools",
-    color: "var(--amber)",
+    color: "var(--teal)",
     items: ["Git", "GitHub", "VS Code", "Postman"],
   },
 ];
+
 
 export default function Skills() {
   return (

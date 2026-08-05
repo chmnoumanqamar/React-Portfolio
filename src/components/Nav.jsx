@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const LINKS = [
+  { href: "#top", label: "Home" },
   { href: "#work", label: "Work" },
   { href: "#method", label: "Method" },
   { href: "#skills", label: "Skills" },
@@ -12,7 +13,7 @@ const LINKS = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("#top");
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function Nav() {
       setProgress(max > 0 ? y / max : 0);
 
       const threshold = y + 160;
-      let current = "";
+      let current = "#top";
       for (const el of sections) {
         if (el.offsetTop <= threshold) {
           current = `#${el.id}`;
@@ -65,14 +66,15 @@ export default function Nav() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative pb-1 transition-colors"
+                className="group relative pb-1 transition-colors hover:text-[var(--ink)]"
                 style={{ color: active === l.href ? "var(--ink)" : "var(--muted)" }}
               >
                 {l.label}
                 <span
-                  className="absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300"
+                  className={`absolute left-0 -bottom-0.5 h-[2px] rounded-full transition-all duration-300 group-hover:w-full ${
+                    active === l.href ? "w-full" : "w-0"
+                  }`}
                   style={{
-                    width: active === l.href ? "100%" : "0%",
                     background: "linear-gradient(90deg, var(--violet), var(--coral))",
                   }}
                 />
@@ -110,7 +112,7 @@ export default function Nav() {
           <ul className="flex flex-col gap-4 font-mono text-sm uppercase tracking-wide">
             {LINKS.map((l) => (
               <li key={l.href}>
-                <a href={l.href} onClick={() => setOpen(false)}>
+                <a href={l.href} onClick={() => setOpen(false)} className="hover:text-[var(--accent)] transition-colors">
                   {l.label}
                 </a>
               </li>
@@ -123,3 +125,4 @@ export default function Nav() {
     </header>
   );
 }
+
