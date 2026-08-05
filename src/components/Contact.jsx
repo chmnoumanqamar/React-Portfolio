@@ -36,24 +36,52 @@ const ICONS = {
 };
 
 const CHANNELS = [
-  { key: "github", label: "GitHub", href: "https://github.com/noumanqamar" },
+  { key: "github", label: "GitHub", href: "https://github.com/chmnoumanqamar" },
   { key: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/muhammad-nouman-qamar-18543338b" },
   { key: "whatsapp", label: "WhatsApp", href: "https://wa.me/923207205141" },
 ];
 
 const EMAIL = "chmnoumanqamar@gmail.com";
 
+// EmailJS — public key, service id, and template id from the EmailJS dashboard.
+const EMAILJS_PUBLIC_KEY = "DLivNyJrNwgPVnsYQ";
+const EMAILJS_SERVICE_ID = "service_a1nc6q7";
+const EMAILJS_TEMPLATE_ID = "template_p2us3ky";
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name || "a visitor"}`);
-    const body = encodeURIComponent(`${form.message}\n\n—\n${form.name}\n${form.email}`);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service_id: EMAILJS_SERVICE_ID,
+          template_id: EMAILJS_TEMPLATE_ID,
+          user_id: EMAILJS_PUBLIC_KEY,
+          template_params: {
+            from_name: form.name,
+            from_email: form.email,
+            reply_to: form.email,
+            to_email: EMAIL,
+            message: form.message,
+          },
+        }),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch {
+      setStatus("error");
+    }
   };
 
   const copyEmail = async () => {
@@ -171,12 +199,24 @@ export default function Contact() {
               />
               <button
                 type="submit"
-                className="mt-1 self-start inline-flex items-center gap-2 text-white font-mono text-sm px-6 py-3.5 rounded-full transition-transform hover:-translate-y-0.5 hover:shadow-lg"
+                disabled={status === "sending"}
+                className="mt-1 self-start inline-flex items-center gap-2 text-white font-mono text-sm px-6 py-3.5 rounded-full transition-transform hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
                 style={{ background: "linear-gradient(120deg, var(--violet), var(--coral))" }}
               >
-                Send message
-                <span className="text-lg">↗</span>
+                {status === "sending" ? "Sending…" : "Send message"}
+                {status !== "sending" && <span className="text-lg">↗</span>}
               </button>
+
+              {status === "success" && (
+                <p className="font-mono text-[13px]" style={{ color: "var(--teal)" }}>
+                  Message sent — I'll get back to you soon.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="font-mono text-[13px]" style={{ color: "var(--coral)" }}>
+                  Couldn't send that — email me directly at {EMAIL} instead.
+                </p>
+              )}
             </form>
           </div>
         </Reveal>

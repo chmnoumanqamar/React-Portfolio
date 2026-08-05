@@ -13,8 +13,10 @@ const TOOLS = ["Claude Code", "Claude Fable", "Claude Cowork", "Codex"];
 function Pill({ step, offset }) {
   return (
     <div
-      className="min-w-0 rounded-3xl border bg-[var(--surface)] px-5 py-6 md:px-6 md:py-7 text-center shadow-lg h-full flex flex-col justify-center"
-      style={{ borderColor: "var(--border)", transform: offset ? "translateY(30px)" : "none" }}
+      className={`min-w-0 rounded-3xl border bg-[var(--surface)] px-5 py-6 md:px-6 md:py-7 text-center shadow-lg h-full flex flex-col justify-center ${
+        offset ? "md:translate-y-[30px]" : ""
+      }`}
+      style={{ borderColor: "var(--border)" }}
     >
       <span className="font-display font-semibold text-[14px] md:text-[15px] whitespace-nowrap" style={{ color: "var(--surface-ink)" }}>
         {step.n} · {step.title}
