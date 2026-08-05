@@ -17,15 +17,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <Reveal>
-          <p
-            className="font-mono text-[13px] uppercase tracking-widest mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg)] px-3 py-1"
-            style={{ color: "var(--ink)" }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--teal)" }} />
-            Full stack AI developer · Pakistan
-          </p>
-        </Reveal>
+        
 
         <Reveal delay={80}>
           <h1 className="font-display font-semibold tracking-tight leading-[0.95] text-[13vw] md:text-[6.2vw] uppercase">
