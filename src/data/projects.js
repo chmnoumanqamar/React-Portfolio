@@ -7,6 +7,7 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg, #6C4CFF 0%, #A78BFF 100%)",
     stack: ["React", "Tailwind", "Vite"],
     icon: "code",
+    github: "https://github.com/chmnoumanqamar/React-Portfolio",
   },
   {
     name: "Titanic ML Prediction",
@@ -16,6 +17,7 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg, #FF6B4A 0%, #FFB020 100%)",
     stack: ["Scikit-learn", "Pandas", "NumPy"],
     icon: "chart",
+    github: "https://github.com/chmnoumanqamar",
   },
   {
     name: "Secure Cloud Storage",
@@ -25,5 +27,6 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg, #12B3A8 0%, #A6E22E 100%)",
     stack: ["Python", "Encryption", "Access control"],
     icon: "lock",
+    github: "https://github.com/chmnoumanqamar",
   },
 ];
