@@ -14,8 +14,8 @@ function App() {
       <Nav />
       <main>
         <Hero />
-        <Method />
         <GiantMarquee />
+        <Method />
         <Skills />
         <About />
         <Contact />
@@ -25,6 +25,7 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
 

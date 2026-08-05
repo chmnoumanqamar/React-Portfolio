@@ -17,8 +17,6 @@ export default function Nav() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const sections = LINKS.map((l) => document.querySelector(l.href)).filter(Boolean);
-
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 12);
@@ -27,7 +25,11 @@ export default function Nav() {
       const max = doc.scrollHeight - doc.clientHeight;
       setProgress(max > 0 ? y / max : 0);
 
-      const threshold = y + 160;
+      const sections = LINKS.map((l) => document.querySelector(l.href))
+        .filter(Boolean)
+        .sort((a, b) => a.offsetTop - b.offsetTop);
+
+      const threshold = y + 200;
       let current = "#top";
       for (const el of sections) {
         if (el.offsetTop <= threshold) {
@@ -45,6 +47,7 @@ export default function Nav() {
       window.removeEventListener("resize", onScroll);
     };
   }, []);
+
 
   return (
     <header
