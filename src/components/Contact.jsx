@@ -106,122 +106,155 @@ export default function Contact() {
   return (
     <section id="contact" className="relative px-6 md:px-8 py-20 md:py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <Reveal>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+          {/* Left Column: Let's build + Email + Socials */}
+          <div className="lg:col-span-6 flex flex-col justify-between h-full">
+            <Reveal>
+              <p className="font-mono text-[13px] uppercase tracking-widest mb-4 font-bold" style={{ color: "var(--teal)" }}>
+                Get In Touch
+              </p>
+              <h2 className="font-display font-black text-5xl sm:text-6xl lg:text-7xl tracking-tight text-[var(--ink)]">
+                Let's build.
+              </h2>
 
-          <h2 className="font-display font-semibold text-5xl md:text-7xl tracking-tight text-[var(--ink)]">
-            Let's build.
-          </h2>
-
-          <svg viewBox="0 0 260 20" className="w-48 md:w-60 mt-2 mb-10" aria-hidden="true">
-            <path
-              d="M2 12 Q 22 2, 42 12 T 82 12 T 122 12 T 162 12 T 202 12 T 242 12"
-              fill="none"
-              stroke="var(--teal)"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </svg>
-        </Reveal>
-
-        <Reveal delay={80}>
-          <div className="flex flex-wrap items-center gap-3 mb-16">
-            <div
-              className="inline-flex items-center gap-3 rounded-full pl-6 pr-2 py-2"
-              style={{ background: "var(--surface)" }}
-            >
-              <span className="font-mono text-[15px] md:text-base" style={{ color: "var(--surface-ink)" }}>
-                {EMAIL}
-              </span>
-              <span className="w-2 h-2 rounded-full shrink-0" style={{ background: "var(--coral)" }} />
-            </div>
-            <button
-              type="button"
-              onClick={copyEmail}
-              aria-label="Copy email address"
-              className="w-11 h-11 rounded-full grid place-items-center border transition-colors"
-              style={{ borderColor: "var(--border)", color: copied ? "var(--teal)" : "var(--ink)" }}
-            >
-              <span className="w-4 h-4 block">{copied ? ICONS.check : ICONS.copy}</span>
-            </button>
-          </div>
-        </Reveal>
-
-        <Reveal delay={140}>
-          <div className="flex flex-wrap gap-4 mb-20">
-            {CHANNELS.map((c) => (
-              <a
-                key={c.key}
-                href={c.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={c.label}
-                title={c.label}
-                className="w-14 h-14 rounded-full grid place-items-center transition-transform hover:-translate-y-1"
-                style={{ background: "var(--surface)", color: "var(--surface-ink)" }}
-              >
-                <span className="w-5 h-5 block">{ICONS[c.key]}</span>
-              </a>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal delay={180}>
-          <div className="max-w-xl">
-            <p className="font-mono text-[11px] uppercase tracking-wide mb-4" style={{ color: "var(--muted)" }}>
-              Or send a message directly
-            </p>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <input
-                  required
-                  value={form.name}
-                  onChange={update("name")}
-                  placeholder="Your name"
-                  className="rounded-lg border px-4 py-3 text-[15px] outline-none transition-colors focus:border-[var(--teal)]"
-                  style={{ borderColor: "var(--border)", background: "var(--surface)", color: "var(--surface-ink)" }}
+              <svg viewBox="0 0 260 20" className="w-48 md:w-60 mt-2 mb-8" aria-hidden="true">
+                <path
+                  d="M2 12 Q 22 2, 42 12 T 82 12 T 122 12 T 162 12 T 202 12 T 242 12"
+                  fill="none"
+                  stroke="var(--teal)"
+                  strokeWidth="4"
+                  strokeLinecap="round"
                 />
-                <input
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={update("email")}
-                  placeholder="you@example.com"
-                  className="rounded-lg border px-4 py-3 text-[15px] outline-none transition-colors focus:border-[var(--teal)]"
-                  style={{ borderColor: "var(--border)", background: "var(--surface)", color: "var(--surface-ink)" }}
-                />
+              </svg>
+
+              <p className="text-[var(--muted)] text-base md:text-lg max-w-md leading-relaxed mb-8">
+                Have a project idea, want to collaborate, or looking for a developer? Send a message and let's turn your vision into reality.
+              </p>
+            </Reveal>
+
+            <Reveal delay={80}>
+              <div className="flex flex-wrap items-center gap-3 mb-8">
+                <div
+                  className="inline-flex items-center gap-3 rounded-full pl-6 pr-3 py-2.5 shadow-md border"
+                  style={{ background: "var(--surface)", borderColor: "var(--border)" }}
+                >
+                  <span className="font-mono text-[14px] sm:text-base font-medium" style={{ color: "var(--surface-ink)" }}>
+                    {EMAIL}
+                  </span>
+                  <span className="w-2.5 h-2.5 rounded-full shrink-0 animate-pulse" style={{ background: "var(--coral)" }} />
+                </div>
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  aria-label="Copy email address"
+                  className="w-12 h-12 rounded-full grid place-items-center border shadow-md transition-all hover:scale-105 active:scale-95"
+                  style={{ borderColor: "var(--border)", background: "var(--surface)", color: copied ? "var(--teal)" : "var(--surface-ink)" }}
+                >
+                  <span className="w-5 h-5 block">{copied ? ICONS.check : ICONS.copy}</span>
+                </button>
               </div>
-              <textarea
-                required
-                rows={4}
-                value={form.message}
-                onChange={update("message")}
-                placeholder="What are you building?"
-                className="rounded-lg border px-4 py-3 text-[15px] outline-none transition-colors focus:border-[var(--teal)] resize-none"
-                style={{ borderColor: "var(--border)", background: "var(--surface)", color: "var(--surface-ink)" }}
-              />
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className="mt-1 self-start inline-flex items-center gap-2 text-white font-mono text-sm px-6 py-3.5 rounded-full transition-transform hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
-                style={{ background: "linear-gradient(120deg, var(--violet), var(--coral))" }}
-              >
-                {status === "sending" ? "Sending…" : "Send message"}
-                {status !== "sending" && <span className="text-lg">↗</span>}
-              </button>
+            </Reveal>
 
-              {status === "success" && (
-                <p className="font-mono text-[13px]" style={{ color: "var(--teal)" }}>
-                  Message sent. I'll get back to you soon.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="font-mono text-[13px]" style={{ color: "var(--coral)" }}>
-                  Couldn't send that. So email me directly at {EMAIL} instead.
-                </p>
-              )}
-            </form>
+            <Reveal delay={140}>
+              <div className="flex flex-wrap gap-4">
+                {CHANNELS.map((c) => (
+                  <a
+                    key={c.key}
+                    href={c.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={c.label}
+                    title={c.label}
+                    className="w-14 h-14 rounded-2xl grid place-items-center shadow-md border transition-all duration-300 hover:-translate-y-1.5 hover:scale-105"
+                    style={{ background: "var(--surface)", borderColor: "var(--border)", color: "var(--surface-ink)" }}
+                  >
+                    <span className="w-6 h-6 block">{ICONS[c.key]}</span>
+                  </a>
+                ))}
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
+
+          {/* Right Column: Direct Message Form directly in front of Let's build */}
+          <div className="lg:col-span-6">
+            <Reveal delay={180}>
+              <div className="p-7 md:p-9 rounded-3xl border shadow-2xl" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+                <h3 className="font-display font-bold text-2xl mb-2" style={{ color: "var(--surface-ink)" }}>
+                  Send a message directly
+                </h3>
+                <p className="font-mono text-[12px] uppercase tracking-wide mb-6" style={{ color: "var(--surface-muted)" }}>
+                  I'll respond within 24 hours.
+                </p>
+
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block font-mono text-[11px] uppercase tracking-wider mb-1.5" style={{ color: "var(--surface-muted)" }}>Your Name</label>
+                      <input
+                        required
+                        value={form.name}
+                        onChange={update("name")}
+                        placeholder="John Doe"
+                        className="w-full rounded-xl border px-4 py-3.5 text-[15px] outline-none transition-all focus:ring-2 focus:ring-[var(--teal)]"
+                        style={{ borderColor: "var(--border)", background: "var(--bg)", color: "var(--ink)" }}
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-mono text-[11px] uppercase tracking-wider mb-1.5" style={{ color: "var(--surface-muted)" }}>Your Email</label>
+                      <input
+                        type="email"
+                        required
+                        value={form.email}
+                        onChange={update("email")}
+                        placeholder="you@example.com"
+                        className="w-full rounded-xl border px-4 py-3.5 text-[15px] outline-none transition-all focus:ring-2 focus:ring-[var(--teal)]"
+                        style={{ borderColor: "var(--border)", background: "var(--bg)", color: "var(--ink)" }}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-mono text-[11px] uppercase tracking-wider mb-1.5" style={{ color: "var(--surface-muted)" }}>Project Details</label>
+                    <textarea
+                      required
+                      rows={4}
+                      value={form.message}
+                      onChange={update("message")}
+                      placeholder="What are you building?"
+                      className="w-full rounded-xl border px-4 py-3.5 text-[15px] outline-none transition-all focus:ring-2 focus:ring-[var(--teal)] resize-none"
+                      style={{ borderColor: "var(--border)", background: "var(--bg)", color: "var(--ink)" }}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="mt-2 w-full inline-flex items-center justify-center gap-3 text-white font-mono font-bold text-base px-6 py-4 rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                    style={{ background: "linear-gradient(120deg, var(--violet), var(--coral))" }}
+                  >
+                    {status === "sending" ? "Sending..." : "Send message"}
+                    {status !== "sending" && <span className="text-xl">↗</span>}
+                  </button>
+
+                  {status === "success" && (
+                    <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-center">
+                      <p className="font-mono text-[13px] font-semibold" style={{ color: "var(--teal)" }}>
+                        ✓ Message sent! I'll get back to you soon.
+                      </p>
+                    </div>
+                  )}
+                  {status === "error" && (
+                    <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-center">
+                      <p className="font-mono text-[13px] font-semibold" style={{ color: "var(--coral)" }}>
+                        Couldn't send that. Please email me directly at {EMAIL}
+                      </p>
+                    </div>
+                  )}
+                </form>
+              </div>
+            </Reveal>
+          </div>
+        </div>
       </div>
 
       <div className="dot-pattern h-16 md:h-20 mt-20 -mx-6 md:-mx-8" aria-hidden="true" />

@@ -1,21 +1,30 @@
-import { useState } from "react";
 import Marquee from "./Marquee";
 import Reveal from "./Reveal";
 
-const GROUPS = [
-  { name: "Frontend", items: ["React", "JavaScript", "HTML", "CSS", "Tailwind CSS"], color: "var(--violet)", desc: "What people click on and use." },
-  { name: "Backend", items: ["Python", "Node.js", "Express", "REST APIs"], color: "var(--teal)", desc: "The logic and data behind the UI." },
-  { name: "AI / ML", items: ["Scikit-learn", "Pandas", "NumPy", "TensorFlow"], color: "var(--coral)", desc: "Models, training, and predictions." },
-  { name: "Tools", items: ["Git", "GitHub", "VS Code", "Postman"], color: "var(--amber)", desc: "The daily workflow." },
+const SKILL_CATEGORIES = [
+  {
+    name: "Frontend",
+    color: "var(--violet)",
+    items: ["React", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+  },
+  {
+    name: "Backend",
+    color: "var(--teal)",
+    items: ["Python", "Node.js", "Express", "REST APIs"],
+  },
+  {
+    name: "AI / ML",
+    color: "var(--coral)",
+    items: ["Scikit-learn", "Pandas", "NumPy", "TensorFlow"],
+  },
+  {
+    name: "Tools",
+    color: "var(--amber)",
+    items: ["Git", "GitHub", "VS Code", "Postman"],
+  },
 ];
 
 export default function Skills() {
-  const [index, setIndex] = useState(0);
-  const group = GROUPS[index];
-
-  const next = () => setIndex((i) => (i + 1) % GROUPS.length);
-  const prev = () => setIndex((i) => (i - 1 + GROUPS.length) % GROUPS.length);
-
   return (
     <section id="skills" className="border-y border-[var(--border)]" style={{ background: "var(--bg)" }}>
       <div className="border-b border-[var(--border)]">
@@ -28,80 +37,57 @@ export default function Skills() {
 
       <div className="px-6 md:px-8 max-w-6xl mx-auto py-20 md:py-28">
         <Reveal>
-          <p className="font-mono text-[13px] uppercase tracking-widest mb-4" style={{ color: "var(--amber)" }}>
+          <p className="font-mono text-[13px] uppercase tracking-widest mb-4 font-bold" style={{ color: "var(--amber)" }}>
             The stack
           </p>
-          <h2 className="font-display font-semibold text-3xl md:text-5xl tracking-tight max-w-2xl text-[var(--ink)]">
+          <h2 className="font-display font-extrabold text-3xl md:text-5xl tracking-tight max-w-2xl text-[var(--ink)]">
             Full stack, with AI/ML underneath.
           </h2>
-          <p className="mt-4 text-[var(--muted)] max-w-xl">
-            React and Tailwind up front, Python and Node behind it, Scikit-learn and
-            TensorFlow for the machine-learning layer.
+          <p className="mt-4 text-[var(--muted)] max-w-xl text-base leading-relaxed mb-12">
+            Every tool, library, and framework used to design, build, and deploy high-performance full-stack web applications and machine learning models.
           </p>
         </Reveal>
 
-        <Reveal delay={100}>
-          <div className="mt-12 rounded-3xl border overflow-hidden" style={{ borderColor: "var(--border)" }}>
-            <div className="p-8 md:p-10 min-h-[260px] flex flex-col" style={{ borderTop: `4px solid ${group.color}` }}>
-              <div className="flex items-start justify-between gap-4 flex-wrap">
-                <div>
-                  <span className="font-mono text-[12px] uppercase tracking-widest" style={{ color: group.color }}>
-                    {String(index + 1).padStart(2, "0")} / {String(GROUPS.length).padStart(2, "0")}
+        {/* Displaying All Skills categorized directly in clear rows/lines */}
+        <div className="flex flex-col gap-6">
+          {SKILL_CATEGORIES.map((cat, i) => (
+            <Reveal key={cat.name} delay={i * 80}>
+              <div
+                className="p-6 md:p-8 rounded-3xl border shadow-lg flex flex-col md:flex-row md:items-center gap-6 justify-between transition-all duration-300 hover:border-black/30"
+                style={{ borderColor: "var(--border)", background: "var(--surface)" }}
+              >
+                {/* Category Title Badge */}
+                <div className="min-w-[160px] shrink-0">
+                  <span className="font-mono text-[11px] uppercase tracking-widest font-bold px-3 py-1 rounded-full border border-black/10 bg-black/5" style={{ color: cat.color }}>
+                    0{i + 1} / {cat.name}
                   </span>
-                  <h3 className="font-display font-semibold text-2xl md:text-3xl mt-2 text-[var(--ink)]">{group.name}</h3>
-                  <p className="text-[var(--muted)] text-[14px] mt-1">{group.desc}</p>
+                  <h3 className="font-display font-bold text-2xl mt-2" style={{ color: "var(--surface-ink)" }}>
+                    {cat.name}
+                  </h3>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={prev}
-                    aria-label="Previous category"
-                    className="w-10 h-10 rounded-full border grid place-items-center transition-colors hover:border-[var(--teal)] hover:text-[var(--teal)]"
-                    style={{ borderColor: "var(--border)", color: "var(--ink)" }}
-                  >
-                    ←
-                  </button>
-                  <button
-                    type="button"
-                    onClick={next}
-                    aria-label="Next category"
-                    className="w-10 h-10 rounded-full grid place-items-center text-white transition-transform hover:-translate-y-0.5"
-                    style={{ background: "linear-gradient(120deg, var(--violet), var(--coral))" }}
-                  >
-                    →
-                  </button>
+                {/* All Skill Items in One Line / Row Layout */}
+                <div className="flex flex-wrap gap-2.5 md:gap-3.5 flex-1">
+                  {cat.items.map((skill) => (
+                    <span
+                      key={skill}
+                      className="font-display font-bold text-sm md:text-lg rounded-2xl px-5 py-3 border-2 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-default bg-white/40"
+                      style={{
+                        borderColor: cat.color,
+                        color: "var(--surface-ink)",
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                {group.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="font-display text-base md:text-lg rounded-xl px-5 py-3 bg-[var(--surface)] border-2 inline-block"
-                    style={{ borderColor: group.color, color: "var(--surface-ink)" }}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-auto pt-8 flex gap-2">
-                {GROUPS.map((g, i) => (
-                  <button
-                    key={g.name}
-                    type="button"
-                    onClick={() => setIndex(i)}
-                    aria-label={`Show ${g.name}`}
-                    className="h-1.5 rounded-full transition-all duration-300"
-                    style={{ width: i === index ? 28 : 10, background: i === index ? g.color : "var(--border)" }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+
+
