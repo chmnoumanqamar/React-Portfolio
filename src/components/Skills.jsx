@@ -45,7 +45,7 @@ export default function Skills() {
             All Core Skills & Stack
           </h2>
           <p className="mt-4 text-[var(--muted)] max-w-xl text-base leading-relaxed mb-14">
-            Every library, framework, tool, and language used across full-stack development and machine learning projects — all shown together.
+            Every library, framework, tool, and language used across full-stack development and machine learning projects all shown together.
           </p>
         </Reveal>
 

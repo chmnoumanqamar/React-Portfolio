@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
 const STATS = [
   { n: "03", label: "Projects shipped", color: "var(--violet)" },
   { n: "04", label: "Skill domains", color: "var(--coral)" },
-  { n: "01", label: "Country — Pakistan", color: "var(--teal)" },
+  { n: "01", label: "Country Pakistan", color: "var(--teal)" },
 ];
 
 export default function Hero() {

@@ -3,7 +3,7 @@ export const PROJECTS = [
     name: "AI Portfolio Website",
     status: "Live",
     tag: "Web · React",
-    desc: "This site — a full-stack portfolio built with React and Tailwind, deployed and iterated with AI-assisted workflows.",
+    desc: "This site a full-stack portfolio built with React and Tailwind, deployed and iterated with AI-assisted workflows.",
     gradient: "linear-gradient(135deg, #6C4CFF 0%, #A78BFF 100%)",
     stack: ["React", "Tailwind", "Vite"],
     icon: "code",

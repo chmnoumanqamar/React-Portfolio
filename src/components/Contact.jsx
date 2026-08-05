@@ -43,7 +43,7 @@ const CHANNELS = [
 
 const EMAIL = "chmnoumanqamar@gmail.com";
 
-// EmailJS — public key, service id, and template id from the EmailJS dashboard.
+// EmailJS public key, service id, and template id from the EmailJS dashboard.
 const EMAILJS_PUBLIC_KEY = "DLivNyJrNwgPVnsYQ";
 const EMAILJS_SERVICE_ID = "service_a1nc6q7";
 const EMAILJS_TEMPLATE_ID = "template_p2us3ky";
@@ -99,7 +99,7 @@ export default function Contact() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {
-      // clipboard unavailable — no-op
+      // clipboard unavailable no-op
     }
   };
 
