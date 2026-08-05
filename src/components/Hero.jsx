@@ -30,7 +30,7 @@ export default function Hero() {
         <Reveal delay={140}>
           <div className="mt-8 md:mt-10 grid md:grid-cols-[1.3fr_1fr] gap-8 md:gap-16 items-start">
             <h2 className="text-xl md:text-2xl leading-snug text-[var(--ink)]">
-              I build full-stack products with AI woven in — from React front ends to
+              I build full-stack products with AI woven in from React front ends to
               Python-backed machine learning. AI speeds up the build; the architecture,
               the review, and the ship decision are mine.
             </h2>

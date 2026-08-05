@@ -107,13 +107,6 @@ export default function Contact() {
     <section id="contact" className="relative px-6 md:px-8 py-20 md:py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <p
-            className="font-mono text-[13px] uppercase tracking-widest mb-8 inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-3 py-1"
-            style={{ color: "var(--ink)" }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--teal)" }} />
-            Open for work · Pakistan
-          </p>
 
           <h2 className="font-display font-semibold text-5xl md:text-7xl tracking-tight text-[var(--ink)]">
             Let's build.
@@ -218,12 +211,12 @@ export default function Contact() {
 
               {status === "success" && (
                 <p className="font-mono text-[13px]" style={{ color: "var(--teal)" }}>
-                  Message sent — I'll get back to you soon.
+                  Message sent. I'll get back to you soon.
                 </p>
               )}
               {status === "error" && (
                 <p className="font-mono text-[13px]" style={{ color: "var(--coral)" }}>
-                  Couldn't send that — email me directly at {EMAIL} instead.
+                  Couldn't send that. So email me directly at {EMAIL} instead.
                 </p>
               )}
             </form>

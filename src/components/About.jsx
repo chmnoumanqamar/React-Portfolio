@@ -59,7 +59,7 @@ export default function About() {
               Freelance · Pakistan
             </p>
             <p className="mt-4 text-white/85 text-[15px] leading-relaxed">
-              Available for remote projects — from full-stack web apps to machine-learning
+              Available for remote projects. From full-stack web apps to machine-learning
               builds, shipped end to end.
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function About() {
             What I take on
           </p>
           <p className="text-[var(--muted)] mb-6 leading-relaxed">
-            Full-stack builds and machine-learning projects, shipped end to end — not
+            Full-stack builds and machine-learning projects, shipped end to end .Not
             just prototypes.
           </p>
           <ul className="flex flex-col gap-4">
