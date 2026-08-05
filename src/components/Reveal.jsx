@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 export default function Reveal({
   children,
   delay = 0,
-  duration = 0.6,
-  yOffset = 30,
-  scaleOffset = 0.96,
+  duration = 0.5,
+  yOffset = 24,
+  scaleOffset = 0.98,
   className = "",
   direction = "up"
 }) {
@@ -28,17 +28,19 @@ export default function Reveal({
     <motion.div
       initial={getInitial()}
       whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
         duration: duration,
         delay: delay / 1000,
-        ease: [0.215, 0.61, 0.355, 1],
+        ease: [0.16, 1, 0.3, 1],
       }}
+      style={{ willChange: "transform, opacity" }}
       className={className}
     >
       {children}
     </motion.div>
   );
 }
+
 
 

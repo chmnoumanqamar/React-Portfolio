@@ -30,74 +30,75 @@ export default function Skills() {
         <Marquee
           items={["ALL CORE SKILLS & STACK", "FULL STACK + AI/ML", "PAKISTAN", "OPEN FOR WORK"]}
           speed={26}
-          className="py-3 font-mono text-[13px] uppercase tracking-wide text-[var(--muted)]"
+          className="py-3 font-mono text-[11px] sm:text-[13px] uppercase tracking-wide text-[var(--muted)]"
         />
       </div>
 
-      <div className="px-6 md:px-8 max-w-6xl mx-auto py-20 md:py-28">
+      <div className="px-4 sm:px-6 md:px-8 max-w-6xl mx-auto py-14 sm:py-20 md:py-28">
         
-        {/* Title Header with Bi-Directional Scroll Animation */}
-        <Reveal direction="up" yOffset={30}>
-          <p className="font-mono text-[13px] uppercase tracking-widest mb-4 font-bold" style={{ color: "var(--teal)" }}>
+        {/* Title Header */}
+        <Reveal direction="up" yOffset={24}>
+          <p className="font-mono text-[11px] sm:text-[13px] uppercase tracking-widest mb-3 sm:mb-4 font-bold" style={{ color: "var(--teal)" }}>
             Technical Expertise
           </p>
-          <h2 className="font-display font-extrabold text-3xl md:text-5xl tracking-tight max-w-2xl text-[var(--ink)]">
+          <h2 className="font-display font-extrabold text-2xl sm:text-4xl md:text-5xl tracking-tight max-w-2xl text-[var(--ink)]">
             All Core Skills & Stack
           </h2>
-          <p className="mt-4 text-[var(--muted)] max-w-xl text-base leading-relaxed mb-14">
-            Every library, framework, tool, and language used across full-stack development and machine learning projects all shown together.
+          <p className="mt-3 sm:mt-4 text-[var(--muted)] max-w-xl text-sm sm:text-base leading-relaxed mb-8 sm:mb-12">
+            Every library, framework, tool, and language used across full-stack development and machine learning projects — all shown together.
           </p>
         </Reveal>
 
-        {/* Display ALL Skills in a Single Smooth Animated Grid (No Categories/Tabs) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
+        {/* Display ALL Skills in a Fully Responsive & Ultra-Smooth Animated Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
           {ALL_SKILLS.map((skill, index) => (
             <motion.div
               key={skill.name}
-              initial={{ opacity: 0, y: 35, scale: 0.92 }}
+              initial={{ opacity: 0, y: 24, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{
-                duration: 0.5,
-                delay: (index % 5) * 0.07,
-                ease: [0.215, 0.61, 0.355, 1],
+                duration: 0.45,
+                delay: (index % 4) * 0.05,
+                ease: [0.16, 1, 0.3, 1],
               }}
               whileHover={{
-                scale: 1.06,
-                y: -6,
-                transition: { type: "spring", stiffness: 350, damping: 20 },
+                scale: 1.04,
+                y: -4,
+                transition: { type: "spring", stiffness: 400, damping: 25 },
               }}
               whileTap={{ scale: 0.97 }}
-              className="group relative p-5 md:p-6 rounded-2xl md:rounded-3xl border shadow-lg cursor-default flex flex-col justify-between overflow-hidden transition-all duration-300"
+              style={{ willChange: "transform, opacity" }}
+              className="group relative p-3.5 sm:p-5 md:p-6 rounded-2xl md:rounded-3xl border shadow-md hover:shadow-xl cursor-default flex flex-col justify-between overflow-hidden transition-all duration-300 min-w-0"
               style={{
                 background: "var(--surface)",
                 borderColor: "var(--border)",
               }}
             >
-              {/* Subtle Ambient Glow on Hover */}
-              <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-[var(--teal)]/20 blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+              {/* Ambient Glow on Hover */}
+              <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-[var(--teal)]/15 blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <span className="text-2xl md:text-3xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6 inline-block">
+              <div className="flex items-center justify-between gap-1.5 mb-3 sm:mb-4">
+                <span className="text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-115 inline-block">
                   {skill.icon}
                 </span>
                 <span 
-                  className="font-mono text-[9px] md:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full border border-black/10 bg-black/5" 
+                  className="font-mono text-[8.5px] sm:text-[9.5px] md:text-[10px] uppercase font-bold tracking-wider px-1.5 sm:px-2 py-0.5 rounded-full border border-black/10 bg-black/5 shrink-0" 
                   style={{ color: "var(--surface-muted)" }}
                 >
                   {skill.tag}
                 </span>
               </div>
 
-              <div>
-                <h3 className="font-display font-bold text-base md:text-xl tracking-tight transition-colors group-hover:text-[var(--accent-ink)]" style={{ color: "var(--surface-ink)" }}>
+              <div className="min-w-0">
+                <h3 className="font-display font-bold text-sm sm:text-base md:text-xl tracking-tight transition-colors truncate group-hover:text-[var(--accent-ink)]" style={{ color: "var(--surface-ink)" }}>
                   {skill.name}
                 </h3>
               </div>
 
               {/* Bottom accent line expand animation */}
               <div className="mt-3 w-full h-1 rounded-full bg-black/10 overflow-hidden">
-                <div className="w-0 h-full bg-[var(--teal)] transition-all duration-500 ease-out group-hover:w-full" />
+                <div className="w-0 h-full bg-[var(--teal)] transition-all duration-400 ease-out group-hover:w-full" />
               </div>
             </motion.div>
           ))}

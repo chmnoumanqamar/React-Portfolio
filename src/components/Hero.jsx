@@ -55,13 +55,13 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={200}>
-          <div className="mt-14 md:mt-20 grid grid-cols-3 gap-6 border-t border-[var(--border)] pt-6">
+          <div className="mt-10 sm:mt-14 md:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 border-t border-[var(--border)] pt-6">
             {STATS.map((s) => (
-              <div key={s.label}>
-                <div className="font-display text-3xl md:text-5xl font-semibold" style={{ color: s.color }}>
+              <div key={s.label} className="p-2 sm:p-0">
+                <div className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold" style={{ color: s.color }}>
                   {s.n}
                 </div>
-                <div className="font-mono text-[11px] md:text-[13px] text-[var(--muted)] uppercase tracking-wide mt-1">
+                <div className="font-mono text-[11px] sm:text-[12px] md:text-[13px] text-[var(--muted)] uppercase tracking-wide mt-1">
                   {s.label}
                 </div>
               </div>
