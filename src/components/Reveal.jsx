@@ -1,33 +1,44 @@
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-export default function Reveal({ as: Tag = "div", delay = 0, className = "", children, ...rest }) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+export default function Reveal({
+  children,
+  delay = 0,
+  duration = 0.6,
+  yOffset = 30,
+  scaleOffset = 0.96,
+  className = "",
+  direction = "up"
+}) {
+  const getInitial = () => {
+    switch (direction) {
+      case "up":
+        return { opacity: 0, y: yOffset, scale: scaleOffset };
+      case "down":
+        return { opacity: 0, y: -yOffset, scale: scaleOffset };
+      case "left":
+        return { opacity: 0, x: yOffset, scale: scaleOffset };
+      case "right":
+        return { opacity: 0, x: -yOffset, scale: scaleOffset };
+      default:
+        return { opacity: 0, y: yOffset, scale: scaleOffset };
+    }
+  };
 
   return (
-    <Tag
-      ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
-      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
-      {...rest}
+    <motion.div
+      initial={getInitial()}
+      whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{
+        duration: duration,
+        delay: delay / 1000,
+        ease: [0.215, 0.61, 0.355, 1],
+      }}
+      className={className}
     >
       {children}
-    </Tag>
+    </motion.div>
   );
 }
+
+
