@@ -74,7 +74,7 @@ export default function Hero() {
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -6, scale: 1.02, transition: { type: "spring", stiffness: 350, damping: 22 } }}
-                className="group relative w-full max-w-[260px] sm:max-w-[290px] md:max-w-[320px] aspect-[3/4] sm:aspect-[4/5] rounded-2xl sm:rounded-3xl rounded-b-[3.5rem] sm:rounded-b-[4rem] border overflow-hidden shadow-2xl transition-all duration-500"
+                className="group relative w-full max-w-[260px] sm:max-w-[290px] md:max-w-[320px] aspect-[3/4] sm:aspect-[4/5] rounded-3xl md:rounded-[2.5rem] border overflow-hidden shadow-2xl transition-all duration-500"
                 style={{
                   borderColor: "var(--border)",
                   background: "var(--surface)",
