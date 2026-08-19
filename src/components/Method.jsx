@@ -14,25 +14,24 @@ const TOOLS = ["CLAUDE CODE", "CLAUDE FABLE", "CLAUDE COWORK", "CODEX"];
 function StepPill({ step, offset, index }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.15 }}
+      initial={{ opacity: 0, y: 30, scale: 0.92, filter: "blur(3px)" }}
+      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+      viewport={{ once: false, amount: 0.15 }}
       transition={{
-        duration: 0.45,
-        delay: index * 0.07,
+        duration: 0.5,
+        delay: index * 0.08,
         ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={{
-        scale: 1.04,
-        y: -5,
-        transition: { type: "spring", stiffness: 400, damping: 25 },
+        scale: 1.05,
+        y: -6,
+        transition: { type: "spring", stiffness: 400, damping: 22 },
       }}
-      whileTap={{ scale: 0.98 }}
-      style={{ willChange: "transform, opacity" }}
-      className={`group relative rounded-2xl md:rounded-3xl border bg-[var(--surface)] p-4 sm:p-5 md:px-6 md:py-7 text-center shadow-md hover:shadow-xl h-full flex flex-col justify-center cursor-pointer overflow-hidden transition-all duration-300 min-w-0 ${
+      whileTap={{ scale: 0.97 }}
+      className={`group relative rounded-2xl md:rounded-3xl border bg-[var(--surface)] p-4 sm:p-5 md:px-6 md:py-7 text-center shadow-md hover:shadow-xl h-full flex flex-col justify-center cursor-pointer overflow-hidden transition-colors duration-300 min-w-0 ${
         offset ? "md:translate-y-[30px]" : ""
       }`}
-      style={{ borderColor: "var(--border)" }}
+      style={{ borderColor: "var(--border)", willChange: "transform, opacity" }}
     >
       {/* Ambient Glow backdrop effect on hover */}
       <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-[var(--teal)]/15 blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
@@ -95,7 +94,7 @@ export default function Method() {
               key={t}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               transition={{ delay: idx * 0.06, duration: 0.4 }}
               whileHover={{ 
                 scale: 1.08, 

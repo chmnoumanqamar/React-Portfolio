@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { PROJECTS } from "../data/projects";
 import ProjectIcon from "./ProjectIcon";
 
@@ -8,14 +9,32 @@ const ROWS = [
   { text: "K", speed: 30 },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 35, scale: 0.92, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 24,
+    },
+  },
+};
+
 function MockCard({ p, i }) {
   return (
-    <a
+    <motion.a
       href={p.link || p.github || "#work"}
       target={p.link || p.github ? "_blank" : undefined}
       rel={p.link || p.github ? "noreferrer" : undefined}
-      className="glow-card group relative block rounded-2xl md:rounded-3xl border overflow-hidden shadow-2xl bg-[var(--surface)] hover:-translate-y-3 hover:scale-[1.02] transition-all duration-500 ease-out flex flex-col justify-between cursor-pointer"
-      style={{ borderColor: "var(--border)", transformStyle: "preserve-3d" }}
+      variants={cardVariants}
+      whileHover={{ y: -10, scale: 1.03, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+      whileTap={{ scale: 0.97 }}
+      className="glow-card group relative block rounded-2xl md:rounded-3xl border overflow-hidden shadow-2xl bg-[var(--surface)] transition-colors duration-300 flex flex-col justify-between cursor-pointer"
+      style={{ borderColor: "var(--border)", transformStyle: "preserve-3d", willChange: "transform, opacity" }}
     >
       {/* Top Browser Bar */}
       <div className="flex items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 border-b border-black/5" style={{ background: "rgba(0,0,0,0.06)" }}>
@@ -82,9 +101,20 @@ function MockCard({ p, i }) {
           ))}
         </div>
       </div>
-    </a>
+    </motion.a>
   );
 }
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
 
 export default function GiantMarquee() {
   return (
@@ -108,11 +138,17 @@ export default function GiantMarquee() {
 
       {/* Prominent Overlay Cards Container */}
       <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-8 py-6">
-        <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+        >
           {PROJECTS.map((p, i) => (
             <MockCard key={p.name} p={p} i={i} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

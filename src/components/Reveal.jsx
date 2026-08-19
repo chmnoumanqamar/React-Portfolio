@@ -8,7 +8,7 @@ export default function Reveal({
   scaleOffset = 0.98,
   className = "",
   direction = "up",
-  once = true,
+  once = false,
 }) {
   const getInitial = () => {
     switch (direction) {

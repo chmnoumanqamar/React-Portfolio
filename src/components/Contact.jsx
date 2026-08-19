@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 
 const ICONS = {
@@ -157,19 +158,25 @@ export default function Contact() {
 
             <Reveal delay={140}>
               <div className="flex flex-wrap gap-4">
-                {CHANNELS.map((c) => (
-                  <a
+                {CHANNELS.map((c, idx) => (
+                  <motion.a
                     key={c.key}
                     href={c.href}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={c.label}
                     title={c.label}
-                    className="w-14 h-14 rounded-2xl grid place-items-center shadow-md border transition-all duration-300 hover:-translate-y-1.5 hover:scale-105"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ delay: idx * 0.08, duration: 0.4 }}
+                    whileHover={{ y: -5, scale: 1.08, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-14 h-14 rounded-2xl grid place-items-center shadow-md border transition-colors cursor-pointer"
                     style={{ background: "var(--surface)", borderColor: "var(--border)", color: "var(--surface-ink)" }}
                   >
                     <span className="w-6 h-6 block">{ICONS[c.key]}</span>
-                  </a>
+                  </motion.a>
                 ))}
               </div>
             </Reveal>
@@ -178,7 +185,11 @@ export default function Contact() {
           {/* Right Column: Direct Message Form directly in front of Let's build */}
           <div className="lg:col-span-6">
             <Reveal delay={180}>
-              <div className="p-7 md:p-9 rounded-3xl border shadow-2xl" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+              <motion.div
+                whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+                className="p-7 md:p-9 rounded-3xl border shadow-2xl transition-colors"
+                style={{ background: "var(--surface)", borderColor: "var(--border)" }}
+              >
                 <h3 className="font-display font-bold text-2xl mb-2" style={{ color: "var(--surface-ink)" }}>
                   Send a message directly
                 </h3>
@@ -251,7 +262,7 @@ export default function Contact() {
                     </div>
                   )}
                 </form>
-              </div>
+              </motion.div>
             </Reveal>
           </div>
         </div>

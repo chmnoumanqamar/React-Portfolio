@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Marquee from "./Marquee";
 import Reveal from "./Reveal";
 
@@ -36,35 +37,47 @@ export default function Hero() {
             </h2>
 
             <div className="flex flex-col gap-3 md:items-end">
-              <a
+              <motion.a
                 href="#work"
-                className="w-full md:w-auto text-center text-white font-mono text-sm px-6 py-3 rounded-full transition-transform hover:-translate-y-0.5 hover:shadow-lg"
+                whileHover={{ y: -3, scale: 1.03, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full md:w-auto text-center text-white font-mono text-sm px-6 py-3 rounded-full shadow-md hover:shadow-xl transition-shadow"
                 style={{ background: "linear-gradient(120deg, var(--violet), var(--coral))" }}
               >
                 See the work
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="#method"
+                whileHover={{ y: -3, scale: 1.03, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+                whileTap={{ scale: 0.97 }}
                 className="w-full md:w-auto text-center border font-mono text-sm px-6 py-3 rounded-full transition-colors hover:border-[var(--violet)] hover:text-[var(--violet)]"
                 style={{ borderColor: "var(--border)", color: "var(--ink)" }}
               >
                 How I build
-              </a>
+              </motion.a>
             </div>
           </div>
         </Reveal>
 
         <Reveal delay={200}>
           <div className="mt-10 sm:mt-14 md:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 border-t border-[var(--border)] pt-6">
-            {STATS.map((s) => (
-              <div key={s.label} className="p-2 sm:p-0">
+            {STATS.map((s, idx) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ delay: idx * 0.1, duration: 0.4 }}
+                whileHover={{ y: -4, transition: { type: "spring", stiffness: 350, damping: 20 } }}
+                className="p-2 sm:p-0 cursor-default"
+              >
                 <div className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold" style={{ color: s.color }}>
                   {s.n}
                 </div>
-                <div className="font-mono text-[11px] sm:text-[12px] md:text-[13px] text-[var(--muted)] uppercase tracking-wide mt-1">
+                <div className="font-mono text-[11px] sm:text-[12px] md:text-[13px] text-[var(--muted)] uppercase tracking-wide mt-1 font-medium">
                   {s.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </Reveal>
