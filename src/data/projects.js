@@ -1,13 +1,14 @@
 export const PROJECTS = [
   {
-    name: "AI Portfolio Website",
+    name: "NEWS Web",
     status: "Live",
-    tag: "Web · React",
-    desc: "This site a full-stack portfolio built with React and Tailwind, deployed and iterated with AI-assisted workflows.",
+    tag: "Next.js · AI · Full Stack",
+    desc: "A full-stack AI-powered news platform built with Next.js and Tailwind CSS, featuring an intelligent chat assistant for real-time news retrieval, search, and automated summaries.",
     gradient: "linear-gradient(135deg, #6C4CFF 0%, #A78BFF 100%)",
-    stack: ["React", "Tailwind", "Vite"],
-    icon: "code",
-    github: "https://github.com/chmnoumanqamar/React-Portfolio",
+    stack: ["Next.js", "Tailwind", "AI Chatbot", "REST API"],
+    icon: "news",
+    link: "https://news-web-chatbot.onrender.com/",
+    github: "https://github.com/chmnoumanqamar",
   },
   {
     name: "Titanic ML Prediction",

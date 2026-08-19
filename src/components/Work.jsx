@@ -10,7 +10,7 @@ function ProjectCard({ p, i }) {
   return (
     <Reveal delay={i * 100}>
       <motion.a
-        href={p.github || GITHUB_PROFILE}
+        href={p.link || p.github || GITHUB_PROFILE}
         target="_blank"
         rel="noreferrer"
         whileHover={{ y: -8, scale: 1.02 }}

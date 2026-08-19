@@ -11,8 +11,10 @@ const ROWS = [
 function MockCard({ p, i }) {
   return (
     <a
-      href="#work"
-      className="glow-card group relative block rounded-2xl md:rounded-3xl border overflow-hidden shadow-2xl bg-[var(--surface)] hover:-translate-y-3 hover:scale-[1.02] transition-all duration-500 ease-out flex flex-col justify-between"
+      href={p.link || p.github || "#work"}
+      target={p.link || p.github ? "_blank" : undefined}
+      rel={p.link || p.github ? "noreferrer" : undefined}
+      className="glow-card group relative block rounded-2xl md:rounded-3xl border overflow-hidden shadow-2xl bg-[var(--surface)] hover:-translate-y-3 hover:scale-[1.02] transition-all duration-500 ease-out flex flex-col justify-between cursor-pointer"
       style={{ borderColor: "var(--border)", transformStyle: "preserve-3d" }}
     >
       {/* Top Browser Bar */}
