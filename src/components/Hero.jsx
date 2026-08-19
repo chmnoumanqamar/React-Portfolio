@@ -11,7 +11,7 @@ const STATS = [
 
 export default function Hero() {
   return (
-    <section id="top" className="relative pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-24 md:pb-12 px-4 sm:px-6 md:px-8 overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center">
+    <section id="top" className="relative pt-24 pb-12 sm:pt-28 sm:pb-14 md:pt-32 md:pb-16 px-4 sm:px-6 md:px-8 overflow-hidden">
       <div className="hero-mesh">
         <span style={{ width: 420, height: 420, top: -140, left: "8%", background: "var(--glow-1)" }} />
         <span style={{ width: 360, height: 360, top: -60, right: "4%", background: "var(--glow-2)" }} />
@@ -19,6 +19,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto w-full">
+        {/* Main Title */}
         <Reveal delay={60}>
           <h1 className="font-display font-bold tracking-tight leading-[0.92] text-[11vw] sm:text-[8vw] md:text-[5.2vw] lg:text-[4.6vw] uppercase">
             Muhammad
@@ -27,10 +28,11 @@ export default function Hero() {
           </h1>
         </Reveal>
 
+        {/* Middle Section: Bio & Buttons (Left) and Picture (Right) with Equal Top/Bottom Margin */}
         <Reveal delay={120}>
-          <div className="mt-6 sm:mt-8 md:mt-10 grid md:grid-cols-12 gap-6 sm:gap-8 md:gap-10 items-center">
+          <div className="my-8 sm:my-10 md:my-12 grid md:grid-cols-12 gap-8 md:gap-10 items-center">
             {/* Left Column: Bio & Action Buttons */}
-            <div className="md:col-span-7 lg:col-span-8 flex flex-col justify-between">
+            <div className="md:col-span-7 lg:col-span-8 flex flex-col justify-center gap-6 sm:gap-8">
               <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-[var(--ink)] font-normal max-w-2xl">
                 I build full-stack products with AI woven in from React front ends to
                 Python-backed machine learning. AI speeds up the build; the architecture,
@@ -38,7 +40,7 @@ export default function Hero() {
               </h2>
 
               {/* Action Buttons */}
-              <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+              <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
                 <motion.a
                   href="#work"
                   whileHover={{ y: -3, scale: 1.04, transition: { type: "spring", stiffness: 400, damping: 20 } }}
@@ -62,15 +64,15 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right Column: Clean Down-Curved Rectangle Portrait Card (Without badge) */}
-            <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end">
+            {/* Right Column: Symmetrical Down-Curved Rectangle Portrait Card */}
+            <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end items-center">
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -6, scale: 1.02, transition: { type: "spring", stiffness: 350, damping: 22 } }}
-                className="group relative w-full max-w-[210px] sm:max-w-[240px] md:max-w-[260px] lg:max-w-[280px] aspect-[3/4] rounded-2xl sm:rounded-3xl rounded-b-[3.2rem] sm:rounded-b-[3.8rem] border overflow-hidden shadow-2xl transition-all duration-500"
+                className="group relative w-full max-w-[210px] sm:max-w-[240px] md:max-w-[260px] aspect-[3/4] rounded-2xl sm:rounded-3xl rounded-b-[3.2rem] sm:rounded-b-[3.8rem] border overflow-hidden shadow-2xl transition-all duration-500"
                 style={{
                   borderColor: "var(--border)",
                   background: "var(--surface)",
@@ -90,8 +92,9 @@ export default function Hero() {
           </div>
         </Reveal>
 
+        {/* Stats Section with Equal Top Margin & Breathing Room */}
         <Reveal delay={180}>
-          <div className="mt-8 sm:mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 border-t border-[var(--border)] pt-5 sm:pt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 border-t border-[var(--border)] pt-8 sm:pt-10">
             {STATS.map((s, idx) => (
               <motion.div
                 key={s.label}
