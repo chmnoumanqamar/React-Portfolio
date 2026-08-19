@@ -19,28 +19,28 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto w-full">
-        {/* Main Title */}
-        <Reveal delay={60}>
-          <h1 className="font-display font-bold tracking-tight leading-[0.92] text-[11vw] sm:text-[8vw] md:text-[5.2vw] lg:text-[4.6vw] uppercase">
-            Muhammad
-            <br />
-            <span className="text-accent">Nouman Qamar</span>
-          </h1>
-        </Reveal>
+        {/* Main 2-Column Hero Grid: Top of picture aligns with top of title */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+          
+          {/* Left Column: Title, Bio & Buttons */}
+          <div className="md:col-span-7 lg:col-span-8 flex flex-col">
+            <Reveal delay={60}>
+              <h1 className="font-display font-bold tracking-tight leading-[0.92] text-[11vw] sm:text-[8vw] md:text-[5vw] lg:text-[4.5vw] uppercase">
+                Muhammad
+                <br />
+                <span className="text-accent">Nouman Qamar</span>
+              </h1>
+            </Reveal>
 
-        {/* Middle Section: Bio & Buttons (Left) and Picture (Right) with Equal Top/Bottom Margin */}
-        <Reveal delay={120}>
-          <div className="my-8 sm:my-10 md:my-12 grid md:grid-cols-12 gap-8 md:gap-10 items-center">
-            {/* Left Column: Bio & Action Buttons */}
-            <div className="md:col-span-7 lg:col-span-8 flex flex-col justify-center gap-6 sm:gap-8">
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-[var(--ink)] font-normal max-w-2xl">
+            <Reveal delay={120}>
+              <h2 className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-[var(--ink)] font-normal max-w-2xl">
                 I build full-stack products with AI woven in from React front ends to
                 Python-backed machine learning. AI speeds up the build; the architecture,
                 the review, and the ship decision are mine.
               </h2>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
+              <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4">
                 <motion.a
                   href="#work"
                   whileHover={{ y: -3, scale: 1.04, transition: { type: "spring", stiffness: 400, damping: 20 } }}
@@ -62,17 +62,19 @@ export default function Hero() {
                   <span className="text-xs">⚡</span>
                 </motion.a>
               </div>
-            </div>
+            </Reveal>
+          </div>
 
-            {/* Right Column: Symmetrical Down-Curved Rectangle Portrait Card */}
-            <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end items-center">
+          {/* Right Column: Portrait Card Starting Directly at the Top */}
+          <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end">
+            <Reveal delay={80}>
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -6, scale: 1.02, transition: { type: "spring", stiffness: 350, damping: 22 } }}
-                className="group relative w-full max-w-[210px] sm:max-w-[240px] md:max-w-[260px] aspect-[3/4] rounded-2xl sm:rounded-3xl rounded-b-[3.2rem] sm:rounded-b-[3.8rem] border overflow-hidden shadow-2xl transition-all duration-500"
+                className="group relative w-full max-w-[260px] sm:max-w-[290px] md:max-w-[320px] aspect-[3/4] sm:aspect-[4/5] rounded-2xl sm:rounded-3xl rounded-b-[3.5rem] sm:rounded-b-[4rem] border overflow-hidden shadow-2xl transition-all duration-500"
                 style={{
                   borderColor: "var(--border)",
                   background: "var(--surface)",
@@ -88,13 +90,14 @@ export default function Hero() {
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
               </motion.div>
-            </div>
+            </Reveal>
           </div>
-        </Reveal>
 
-        {/* Stats Section with Equal Top Margin & Breathing Room */}
+        </div>
+
+        {/* Stats Section */}
         <Reveal delay={180}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 border-t border-[var(--border)] pt-8 sm:pt-10">
+          <div className="mt-12 sm:mt-14 md:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 border-t border-[var(--border)] pt-8 sm:pt-10">
             {STATS.map((s, idx) => (
               <motion.div
                 key={s.label}
