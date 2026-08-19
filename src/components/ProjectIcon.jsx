@@ -40,6 +40,24 @@ const PATHS = {
       <path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z" />
     </>
   ),
+  crypto: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M10 8h3a2 2 0 0 1 0 4h-3m0 0h3.5a2 2 0 0 1 0 4H10M10 6v12m2-14v2m0 12v2" />
+    </>
+  ),
+  bitcoin: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <path d="M9.5 8.5h3.5a2 2 0 0 1 0 3.5H9.5m0 0h4a2 2 0 0 1 0 4H9.5M9.5 7v10m2-12v2m0 10v2" />
+    </>
+  ),
+  trending: (
+    <>
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+      <polyline points="16 7 22 7 22 13" />
+    </>
+  ),
 };
 
 export default function ProjectIcon({ icon, className = "w-5 h-5" }) {
