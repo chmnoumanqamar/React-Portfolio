@@ -12,10 +12,8 @@ const ALL_SKILLS = [
   { name: "Node.js", icon: "🟢", tag: "Backend" },
   { name: "Express", icon: "🚀", tag: "Backend" },
   { name: "REST APIs", icon: "🔌", tag: "Backend" },
-  { name: "Scikit-learn", icon: "🤖", tag: "AI / ML" },
   { name: "Pandas", icon: "🐼", tag: "AI / ML" },
   { name: "NumPy", icon: "🔢", tag: "AI / ML" },
-  { name: "TensorFlow", icon: "🧠", tag: "AI / ML" },
   { name: "Git", icon: "🌿", tag: "Tools" },
   { name: "GitHub", icon: "🐙", tag: "Tools" },
   { name: "VS Code", icon: "💻", tag: "Tools" },
@@ -35,7 +33,7 @@ export default function Skills() {
       </div>
 
       <div className="px-4 sm:px-6 md:px-8 max-w-6xl mx-auto py-14 sm:py-20 md:py-28">
-        
+
         {/* Title Header */}
         <Reveal direction="up" yOffset={24}>
           <p className="font-mono text-[11px] sm:text-[13px] uppercase tracking-widest mb-3 sm:mb-4 font-bold" style={{ color: "var(--teal)" }}>
@@ -82,8 +80,8 @@ export default function Skills() {
                 <span className="text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-115 inline-block">
                   {skill.icon}
                 </span>
-                <span 
-                  className="font-mono text-[8.5px] sm:text-[9.5px] md:text-[10px] uppercase font-bold tracking-wider px-1.5 sm:px-2 py-0.5 rounded-full border border-black/10 bg-black/5 shrink-0" 
+                <span
+                  className="font-mono text-[8.5px] sm:text-[9.5px] md:text-[10px] uppercase font-bold tracking-wider px-1.5 sm:px-2 py-0.5 rounded-full border border-black/10 bg-black/5 shrink-0"
                   style={{ color: "var(--surface-muted)" }}
                 >
                   {skill.tag}
