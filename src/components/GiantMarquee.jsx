@@ -211,18 +211,6 @@ export default function GiantMarquee() {
 
         {/* Mobile View: Swipeable Horizontal Carousel (< md) */}
         <div className="block md:hidden w-full">
-          {/* Mobile Header Bar with Counter & Hint */}
-          <div className="flex items-center justify-between px-6 mb-3">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-[var(--accent)] bg-[var(--glow-1)] border border-[var(--accent)]/30 rounded-full px-3 py-1">
-                Project 0{currentIndex + 1} / 0{PROJECTS.length}
-              </span>
-            </div>
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--muted)] flex items-center gap-1 opacity-80">
-              <span>👈 Swipe 👉</span>
-            </span>
-          </div>
-
           {/* Touch-Scrollable Horizontal Container */}
           <div
             ref={scrollRef}
