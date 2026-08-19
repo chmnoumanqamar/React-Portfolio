@@ -36,24 +36,26 @@ export default function Hero() {
               the review, and the ship decision are mine.
             </h2>
 
-            <div className="flex flex-col gap-3 md:items-end">
+            <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 md:items-end lg:items-center">
               <motion.a
                 href="#work"
-                whileHover={{ y: -3, scale: 1.03, transition: { type: "spring", stiffness: 400, damping: 20 } }}
-                whileTap={{ scale: 0.97 }}
-                className="w-full md:w-auto text-center text-white font-mono text-sm px-6 py-3 rounded-full shadow-md hover:shadow-xl transition-shadow"
-                style={{ background: "linear-gradient(120deg, var(--violet), var(--coral))" }}
+                whileHover={{ y: -3, scale: 1.04, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+                whileTap={{ scale: 0.96 }}
+                className="w-full md:w-auto inline-flex items-center justify-center gap-2 text-center font-mono font-bold text-sm px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer"
+                style={{ background: "var(--accent)", color: "var(--accent-ink)" }}
               >
-                See the work
+                <span>See the work</span>
+                <span className="text-base font-black leading-none">↗</span>
               </motion.a>
               <motion.a
                 href="#method"
-                whileHover={{ y: -3, scale: 1.03, transition: { type: "spring", stiffness: 400, damping: 20 } }}
-                whileTap={{ scale: 0.97 }}
-                className="w-full md:w-auto text-center border font-mono text-sm px-6 py-3 rounded-full transition-colors hover:border-[var(--violet)] hover:text-[var(--violet)]"
-                style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+                whileHover={{ y: -3, scale: 1.04, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+                whileTap={{ scale: 0.96 }}
+                className="w-full md:w-auto inline-flex items-center justify-center gap-2 text-center font-mono font-bold text-sm px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all border cursor-pointer hover:border-[var(--accent)]"
+                style={{ background: "var(--surface)", color: "var(--surface-ink)", borderColor: "var(--border)" }}
               >
-                How I build
+                <span>How I build</span>
+                <span className="text-xs">⚡</span>
               </motion.a>
             </div>
           </div>
