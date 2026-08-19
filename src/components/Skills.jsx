@@ -20,6 +20,37 @@ const ALL_SKILLS = [
   { name: "Postman", icon: "🚀", tag: "Tools" },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.9,
+    filter: "blur(3px)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring",
+      stiffness: 320,
+      damping: 22,
+    },
+  },
+};
+
 export default function Skills() {
   return (
     <section id="skills" className="relative border-y border-[var(--border)] overflow-hidden" style={{ background: "var(--bg)" }}>
@@ -34,8 +65,8 @@ export default function Skills() {
 
       <div className="px-4 sm:px-6 md:px-8 max-w-6xl mx-auto py-14 sm:py-20 md:py-28">
 
-        {/* Title Header */}
-        <Reveal direction="up" yOffset={24}>
+        {/* Title Header with Reverse Scroll Animation */}
+        <Reveal direction="up" yOffset={24} once={false}>
           <p className="font-mono text-[11px] sm:text-[13px] uppercase tracking-widest mb-3 sm:mb-4 font-bold" style={{ color: "var(--teal)" }}>
             Technical Expertise
           </p>
@@ -47,37 +78,36 @@ export default function Skills() {
           </p>
         </Reveal>
 
-        {/* Display ALL Skills in a Fully Responsive & Ultra-Smooth Animated Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
-          {ALL_SKILLS.map((skill, index) => (
+        {/* Display ALL Skills with Staggered Forward and Reverse Scroll Animation */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.15 }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5"
+        >
+          {ALL_SKILLS.map((skill) => (
             <motion.div
               key={skill.name}
-              initial={{ opacity: 0, y: 24, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{
-                duration: 0.45,
-                delay: (index % 4) * 0.05,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+              variants={itemVariants}
               whileHover={{
-                scale: 1.04,
-                y: -4,
-                transition: { type: "spring", stiffness: 400, damping: 25 },
+                scale: 1.05,
+                y: -6,
+                transition: { type: "spring", stiffness: 400, damping: 20 },
               }}
-              whileTap={{ scale: 0.97 }}
-              style={{ willChange: "transform, opacity" }}
-              className="group relative p-3.5 sm:p-5 md:p-6 rounded-2xl md:rounded-3xl border shadow-md hover:shadow-xl cursor-default flex flex-col justify-between overflow-hidden transition-all duration-300 min-w-0"
+              whileTap={{ scale: 0.96 }}
+              className="group relative p-3.5 sm:p-5 md:p-6 rounded-2xl md:rounded-3xl border shadow-md hover:shadow-xl cursor-default flex flex-col justify-between overflow-hidden transition-colors duration-300 min-w-0"
               style={{
                 background: "var(--surface)",
                 borderColor: "var(--border)",
+                willChange: "transform, opacity",
               }}
             >
               {/* Ambient Glow on Hover */}
               <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-[var(--teal)]/15 blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
               <div className="flex items-center justify-between gap-1.5 mb-3 sm:mb-4">
-                <span className="text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-115 inline-block">
+                <span className="text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6 inline-block">
                   {skill.icon}
                 </span>
                 <span
@@ -100,7 +130,7 @@ export default function Skills() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>

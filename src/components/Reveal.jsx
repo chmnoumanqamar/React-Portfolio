@@ -7,7 +7,8 @@ export default function Reveal({
   yOffset = 24,
   scaleOffset = 0.98,
   className = "",
-  direction = "up"
+  direction = "up",
+  once = true,
 }) {
   const getInitial = () => {
     switch (direction) {
@@ -28,7 +29,7 @@ export default function Reveal({
     <motion.div
       initial={getInitial()}
       whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: once, amount: 0.15 }}
       transition={{
         duration: duration,
         delay: delay / 1000,
